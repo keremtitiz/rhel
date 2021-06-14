@@ -1,13 +1,13 @@
 #!/bin/bash
-#Rhel IDM Sunucusuna kayit yapar
+#Rhel IDM Register record.
 sunucuadi=$(hostname);
 
-#ipa paketi kurulumu
+#installation ipa package
 yum install ipa-client -y
 
-#ipa client ile register
-#sorulara yes ve username olarak admin girilir.
+#register with ipa client
+#answer usernanme and password.
 ipa-client-install --mkhomedir --server=idmserver.domain.com --domain domain.com --realm DOMAIN.COM --principal=admin --password=PASSWORD --fixed-primary -U --hostname=$sunucuadi
 
-#otomatik user folder'i olusturma
+#create automatically user folder
 authconfig --enablemkhomedir --update
